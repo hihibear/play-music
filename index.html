@@ -3,142 +3,180 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>JS Drum Kit</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRUM</title>
+    <STyle>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            /* border: 2px solid ; */
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+
+        }
+
+        .result {
+            width: 200px;
+            height: 50px;
+            background-color: darkkhaki;
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+            margin-top: 150px;
+            color: darkred;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 30px;
+            font-size: 30px;
+        }
+
+        .words {
+            width: 100%;
+            height: 100px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .word {
+            width: 100px;
+            height: 100px;
+            border: 2px solid darkcyan;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 15px;
+            transition: all 1.3s ease;
+        }
+
+        .word:hover {
+            background-color: darkseagreen;
+        }
+
+        .black {
+            color: black;
+        }
+
+        .red {
+            color: red
+        }
+
+        /* #press{
+            color: aqua;
+        } */
+    </STyle>
 </head>
 
-<style>
-    html {
-        font-size: 10px;
-        background: url('./background.jpg') bottom center;
-        background-size: cover;
-    }
-
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-    }
-
-    .keys {
-        display: flex;
-        flex: 1;
-        min-height: 100vh;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .key {
-        border: .4rem solid black;
-        border-radius: .5rem;
-        margin: 1rem;
-        font-size: 1.5rem;
-        padding: 1rem .5rem;
-        transition: all .07s ease;
-        width: 10rem;
-        text-align: center;
-        color: white;
-        background: rgba(0, 0, 0, 0.4);
-        text-shadow: 0 0 .5rem black;
-    }
-
-    .playing {
-        transform: scale(1.1);
-        border-color: #ffc600;
-        box-shadow: 0 0 1rem #ffc600;
-    }
-
-    kbd {
-        display: block;
-        font-size: 4rem;
-    }
-
-    .sound {
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        letter-spacing: .1rem;
-        color: #ffc600;
-    }
-</style>
-
 <body>
-
-
-    <div class="keys">
-        <div data-key="65" class="key">
-            <kbd>A</kbd>
-            <span class="sound">clap</span>
+    <div class="result"></div>
+    <div class="words">
+        <div data-code="65" class="word" onclick="press(event,'CLAP')">A
+            <p>CLAP</p>
         </div>
-        <div data-key="83" class="key">
-            <kbd>S</kbd>
-            <span class="sound">hihat</span>
+        <div data-code="83" class="word" onclick="press(event,'HIHAT')">S
+            <br>
+            <p>HIHAT</p>
         </div>
-        <div data-key="68" class="key">
-            <kbd>D</kbd>
-            <span class="sound">kick</span>
+        <div data-code="68" class="word w1.
+        " onclick="press(event,'KICK')">D
+            <p>KICK</p>
         </div>
-        <div data-key="70" class="key">
-            <kbd>F</kbd>
-            <span class="sound">openhat</span>
+        <div data-code="70" class="word" onclick="press(event,'OPENHAT')">F
+            <p>OPENHAT</p>
         </div>
-        <div data-key="71" class="key">
-            <kbd>G</kbd>
-            <span class="sound">boom</span>
+        <div data-code="71" class="word" onclick="press(event,'BOOM')">G
+            <p>BOOM</p>
         </div>
-        <div data-key="72" class="key">
-            <kbd>H</kbd>
-            <span class="sound">ride</span>
+        <div data-code="72" class="word" onclick="press(event,'RIDE')">H
+            <p>RIDE</p>
         </div>
-        <div data-key="74" class="key">
-            <kbd>J</kbd>
-            <span class="sound">snare</span>
+        <div data-code="74" class="word" onclick="press(event,'SNARE')">J
+            <p>SNARE</p>
         </div>
-        <div data-key="75" class="key">
-            <kbd>K</kbd>
-            <span class="sound">tom</span>
+        <div data-code="75" class="word" onclick="press(event,'TOM')">K
+            <p>TOM</p>
         </div>
-        <div data-key="76" class="key">
-            <kbd>L</kbd>
-            <span class="sound">tink</span>
+        <div data-code="76" class="word" onclick="press(event,'TINK')">L
+            <p>TINK</p>
         </div>
     </div>
 
-    <audio data-key="65" src="sounds/clap.wav"></audio>
-    <audio data-key="83" src="sounds/hihat.wav"></audio>
-    <audio data-key="68" src="sounds/kick.wav"></audio>
-    <audio data-key="70" src="sounds/openhat.wav"></audio>
-    <audio data-key="71" src="sounds/boom.wav"></audio>
-    <audio data-key="72" src="sounds/ride.wav"></audio>
-    <audio data-key="74" src="sounds/snare.wav"></audio>
-    <audio data-key="75" src="sounds/tom.wav"></audio>
-    <audio data-key="76" src="sounds/tink.wav"></audio>
+    <audio data-code="65" src="./sounds/clap.wav"></audio>
+    <audio data-code="83" src="./sounds/hihat.wav"></audio>
+    <audio data-code="68" src="./sounds/kick.wav"></audio>
+    <audio data-code="70" src="./sounds/openhat.wav"></audio>
+    <audio data-code="71" src="./sounds/boom.wav"></audio>
+    <audio data-code="72" src="./sounds/ride.wav"></audio>
+    <audio data-code="74" src="./sounds/snare.wav"></audio>
+    <audio data-code="75" src="./sounds/tom.wav"></audio>
+    <audio data-code="76" src="./sounds/tink.wav"></audio>
+
 
     <script>
-        function removeTransition(e) {
-            //propertyName是CSS裡的transition中有改變的屬性
-            if (e.propertyName !== 'transform') return;
-            e.target.classList.remove('playing');
+        let word = document.querySelectorAll('.word')
+        const result = document.querySelector('.result')
+
+        function press(evt, watch) {
+            result.innerHTML = watch
+            // for (let index = 0; index < word.length; index++) {
+            //     word[index].style.color = 'black';
+            // }
+
+            word.forEach(element => {
+                element.style.color = 'black';
+
+            });
+
+            //let word = document.getElementsByClassName('word')
+            //querySelectorAll=getElementsByClassName
+            //getElementById
+            console.log(word)
+
+            //currentTarget當前的目標
+            evt.currentTarget.style.color = 'red'
+            console.log(evt.currentTarget)
+
+            //evt.currentTarget.classList.add = 'red'
         }
 
-        function playSound(e) {
-            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-            //如果點擊的沒有音樂檔就會結束。
-            if (!audio) return;
+        //監聽事件
+        //function裡面的變數是作用的對象
+        //作用範圍.addEventListener('監聽的事件',function(變數){要做的事情})
+        //document.addEventLinstener('keydown')
 
-            key.classList.add('playing');
-            //設定播放時間
-            audio.currentTime = 0;
-            //撥放音樂檔
-            audio.play();
-        }
+        document.addEventListener('keydown', function (t) {
+            console.log(t);
+            word.forEach(element => {
+                element.classList.remove("red")
+            });
+            let key = document.querySelector(`div[data-code = "${t.keyCode}"]`)
+            key.classList.add('red')
 
-        const keys = Array.from(document.querySelectorAll('.key'));
-        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-        window.addEventListener('keydown', playSound);
+
+            let content = key.querySelector('p')
+            // let result = document.querySelector('.result')
+            console.log(result);
+            result.innerHTML = content.textContent
+
+            const audio = document.querySelector(`audio[data-code="${t.keyCode}"]`)
+            if (audio) {
+                audio.currentTime = 0
+                audio.play()
+            }
+        })
+
+
     </script>
-
-
 </body>
 
 </html>
